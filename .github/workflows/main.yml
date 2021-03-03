@@ -9,9 +9,9 @@ jobs:
       OSX_MIN_VERSION: 10.14
     runs-on: macOS-latest
     steps:
-    - uses: maxim-lobanov/setup-xcode@v1
-      with:
-        xcode-version: '12.0'
+    # - uses: maxim-lobanov/setup-xcode@v1
+    #   with:
+    #     xcode-version: '12.0'
     - uses: actions/checkout@v1
       with:
         submodules: recursive
@@ -23,7 +23,7 @@ jobs:
         tar -xzf boost_1_71_0.tar.gz
         cd boost_1_71_0
         ./bootstrap.sh 
-        ./b2
+        ./b2 threading=multi link=static runtime-link=static
         ./b2 install
     - name: build
       run: |
