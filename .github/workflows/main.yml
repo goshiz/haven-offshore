@@ -48,7 +48,9 @@ jobs:
         cd haven-blockchain-explorer
         ./build-block-explorer.sh -j3
     - name: 'Compress'
-      run: tar -cvf Haven-Linux-glibc2-27.tar.gz monero/build/release/bin/
+      run: |
+        tar -cvf Haven-Linux-glibc2-27.tar.gz -C monero/build/release/bin/ .
+        sha256sum Haven-Linux-glibc2-27.tar.gz
     - name: Upload artifact
       uses: actions/upload-artifact@v2
       with:
@@ -102,7 +104,9 @@ jobs:
         ./build-haven.sh release-static -j3
         chmod +x monero/build/release/bin/*
     - name: 'Compress'
-      run: tar -cvf Haven-Linux-glibc2-29.tar.gz monero/build/release/bin/
+      run: |
+        tar -cvf Haven-Linux-glibc2-29.tar.gz -C monero/build/release/bin/ .
+        sha256sum Haven-Linux-glibc2-29.tar.gz
     - name: Upload artifact
       uses: actions/upload-artifact@v2
       with:
@@ -135,7 +139,9 @@ jobs:
         ./build-haven.sh release-static-mac-x86_64 -j${nproc}
         chmod +x monero/build/release/bin/*
     - name: 'Compress'
-      run: tar -cvf Haven-MacOS.tar.gz monero/build/release/bin/
+      run: |
+        tar -cvf Haven-MacOS.tar.gz -C monero/build/release/bin/ .
+        sha256sum Haven-MacOS.tar.gz
     - name: Upload artifact
       uses: actions/upload-artifact@v2
       with:
