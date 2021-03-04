@@ -146,7 +146,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: Haven-MacOS
-        path:/tmp/ Haven-MacOS.tar.gz
+        path: /tmp/Haven-MacOS.tar.gz
   build-windows:
     env:
       ACTIONS_ALLOW_UNSECURE_COMMANDS: true
