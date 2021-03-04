@@ -141,7 +141,7 @@ jobs:
     - name: 'Compress'
       run: |
         tar -cvf Haven-MacOS.tar.gz -C monero/build/release/bin/ .
-        sha256sum Haven-MacOS.tar.gz
+        shasum -a 256 Haven-MacOS.tar.gz
     - name: Upload artifact
       uses: actions/upload-artifact@v2
       with:
