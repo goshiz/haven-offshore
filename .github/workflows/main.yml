@@ -49,13 +49,13 @@ jobs:
         ./build-block-explorer.sh -j3
     - name: 'Compress'
       run: |
-        tar -cvf Haven-Linux-glibc2-27.tar.gz -C monero/build/release/bin/ .
-        sha256sum Haven-Linux-glibc2-27.tar.gz
+        cd monero/build/release/bin/ && tar -cvf /tmp/Haven-Linux-glibc2-27.tar.gz *
+        sha256sum /tmp/Haven-Linux-glibc2-27.tar.gz
     - name: Upload artifact
       uses: actions/upload-artifact@v2
       with:
         name: Haven-Linux-glibc2-27
-        path: Haven-Linux-glibc2-27.tar.gz
+        path: /tmp/Haven-Linux-glibc2-27.tar.gz
     - name: Upload Haven Explorer
       uses: actions/upload-artifact@v2
       with:
@@ -105,13 +105,13 @@ jobs:
         chmod +x monero/build/release/bin/*
     - name: 'Compress'
       run: |
-        tar -cvf Haven-Linux-glibc2-29.tar.gz -C monero/build/release/bin/ .
-        sha256sum Haven-Linux-glibc2-29.tar.gz
+        cd monero/build/release/bin/ && tar -cvf /tmp/Haven-Linux-glibc2-29.tar.gz *
+        sha256sum /tmp/Haven-Linux-glibc2-29.tar.gz
     - name: Upload artifact
       uses: actions/upload-artifact@v2
       with:
         name: Haven-Linux-glibc2-29
-        path: Haven-Linux-glibc2-29.tar.gz
+        path: /tmp/Haven-Linux-glibc2-29.tar.gz
   build-macos:
     env:
       CMAKE_OSX_DEPLOYMENT_TARGET: 10.14
@@ -140,13 +140,13 @@ jobs:
         chmod +x monero/build/release/bin/*
     - name: 'Compress'
       run: |
-        tar -cvf Haven-MacOS.tar.gz -C monero/build/release/bin/ .
-        shasum -a 256 Haven-MacOS.tar.gz
+        cd monero/build/release/bin/ && tar -cvf /tmp/Haven-MacOS.tar.gz * 
+        shasum -a 256 /tmp/Haven-MacOS.tar.gz
     - name: Upload artifact
       uses: actions/upload-artifact@v2
       with:
         name: Haven-MacOS
-        path: Haven-MacOS.tar.gz
+        path:/tmp/ Haven-MacOS.tar.gz
   build-windows:
     env:
       ACTIONS_ALLOW_UNSECURE_COMMANDS: true
